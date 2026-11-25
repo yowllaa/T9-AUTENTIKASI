@@ -154,39 +154,39 @@ Kalau email register sudah pernah digunakan, pakai email lain atau langsung logi
 
 ## Bukti screenshot
 
-Screenshot disimpan di folder `screenshot-terbaru9/`. Gambar di bawah menggunakan path relatif, jadi akan tampil di GitHub selama folder dan nama file tidak diubah serta ikut di-push.
+Screenshot disimpan di folder `ss-t9/`. Gambar di bawah menggunakan path relatif, jadi akan tampil di GitHub selama folder dan nama file tidak diubah serta ikut di-push.
 
 ### 1. Register
 
-![Register](screenshot-terbaru9/1-regis.png)
+![Register](ss-t9/1-regis.png)
 
 ### 2. GET publik
 
-![GET publik](screenshot-terbaru9/2-tes-publik.png)
+![GET publik](ss-t9/2-tes-publik.png)
 
 ### 3. Request tanpa token
 
-![Tanpa token](screenshot-terbaru9/3-tanpa-token.png)
+![Tanpa token](ss-t9/3-tanpa-token.png)
 
 ### 4. Request dengan token
 
-![Dengan token](screenshot-terbaru9/4-dengan-token.png)
+![Dengan token](ss-t9/4-dengan-token.png)
 
 ### 5. Tes user / endpoint auth saya
 
-![Tes user](screenshot-terbaru9/5-tes-user.png)
+![Tes user](ss-t9/5-tes-user.png)
 
 ### 6. Token dimanipulasi
 
-![Manipulasi token](screenshot-terbaru9/6-manipulasi-token.png)
+![Manipulasi token](ss-t9/6-manipulasi-token.png)
 
 ### 7. Token expired
 
-![Token expired](screenshot-terbaru9/7-token-expired.png)
+![Token expired](ss-t9/7-token-expired.png)
 
 ### 8. File request HTTP
 
-![HTTP request](screenshot-terbaru9/8-http-request.png)
+![HTTP request](ss-t9/8-http-request.png)
 
 ## Pengujian token manipulasi
 
@@ -226,5 +226,5 @@ Setelah penambahan autentikasi, route Stockify yang membaca data masih bisa diak
 
 - `requests.http`: kumpulan request untuk mencoba endpoint.
 - `scripts/tamper-token.js`: script untuk membuat token manipulasi.
-- `screenshot-terbaru9/`: folder bukti screenshot.
+- `ss-t9/`: folder bukti screenshot.
 - `src/controller`, `src/service`, `src/routes`, `src/data`: pemisahan bagian API.
