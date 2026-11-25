@@ -1,0 +1,144 @@
+@baseUrl = http://localhost:3000
+@email = f1d02410039@example.com
+@password = yola1234
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJmMWQwMjQxMDAzOUBleGFtcGxlLmNvbSIsImlhdCI6MTc5NTYyMjgxOSwiZXhwIjoxNzk1NjMwMDE5fQ.YE_bCp4uiWx5Dgp-uYfd5ZpwkjWCswRUB8HWdgOLFgE
+
+### Health check
+GET {{baseUrl}}/
+
+### Register
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "email": "{{email}}",
+  "password": "{{password}}"
+}
+
+### Login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "{{email}}",
+  "password": "{{password}}"
+}
+
+### Cek user yang sedang login
+GET {{baseUrl}}/auth/saya
+Authorization: Bearer {{token}}
+
+### GET kategori (public)
+GET {{baseUrl}}/api/categories
+
+### GET detail kategori dummy (public, ID 1 pada database baru)
+GET {{baseUrl}}/api/categories/1
+
+### GET produk (public)
+GET {{baseUrl}}/api/products
+
+### GET detail produk dummy (public, ID 1 pada database baru)
+GET {{baseUrl}}/api/products/1
+
+### POST kategori tanpa token (harus 401)
+POST {{baseUrl}}/api/categories
+Content-Type: application/json
+
+{
+  "name": "Kategori Percobaan Stockify"
+}
+
+### POST kategori dengan token
+POST {{baseUrl}}/api/categories
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Kategori Percobaan Stockify"
+}
+
+### Detail kategori (ganti ID sesuai response)
+GET {{baseUrl}}/api/categories/1
+
+### POST produk tanpa token (harus 401)
+POST {{baseUrl}}/api/products
+Content-Type: application/json
+
+{
+  "name": "Mouse Demo",
+  "sku": "STK-DEMO-999",
+  "description": "Produk pengujian",
+  "price": 150000,
+  "stock": 10,
+  "categoryId": 1
+}
+
+### POST produk dengan token
+POST {{baseUrl}}/api/products
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Mouse Demo",
+  "sku": "STK-DEMO-999",
+  "description": "Produk pengujian",
+  "price": 150000,
+  "stock": 10,
+  "categoryId": 1
+}
+
+### PATCH produk dengan token (ganti ID jika berbeda)
+PATCH {{baseUrl}}/api/products/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "stock": 20,
+  "price": 175000
+}
+
+### DELETE produk dengan token
+DELETE {{baseUrl}}/api/products/1
+Authorization: Bearer {{token}}
+
+### PATCH kategori tanpa token (harus 401)
+PATCH {{baseUrl}}/api/categories/1
+Content-Type: application/json
+
+{
+  "name": "Nama kategori edit"
+}
+
+### DELETE kategori tanpa token (harus 401)
+DELETE {{baseUrl}}/api/categories/1
+
+### Login salah (harus 401)
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "{{email}}",
+  "password": "password-salah"
+}
+
+### Register email duplikat (harus 409)
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "email": "{{email}}",
+  "password": "{{password}}"
+}
+
+### Validasi register (harus 400)
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "email": "bukan-email",
+  "password": "123"
+}
+
+### Token palsu (harus 401)
+GET {{baseUrl}}/auth/saya
+Authorization: Bearer token-palsu
